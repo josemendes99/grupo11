@@ -33,6 +33,7 @@
 	    <li><a href="../Home/Home.jsp">Home</a></li>
 	    <li><a href="#">Cadastros</a>
 	      <ul>
+	      <li><a href="../Ronda/RondaForm.jsp">Pessoas</a></li>
 	        <li><a href="../Pessoa/PessoaForm.jsp">Pessoas</a></li>
 	       
 	        

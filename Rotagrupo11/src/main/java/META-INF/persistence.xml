@@ -3,6 +3,10 @@
 	<persistence-unit name="app01" transaction-type="RESOURCE_LOCAL">
 		<class>br.upf.ads.rota.model.Pessoa</class>
 		<class>br.upf.ads.rota.model.Usuario</class>
+		<class>br.upf.ads.rota.model.Localizacao</class>
+		<class>br.upf.ads.rota.model.Locomocao</class>
+		<class>br.upf.ads.rota.model.Ocorrencia</class>
+		<class>br.upf.ads.rota.model.Ronda</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db"/>
 			<property name="javax.persistence.jdbc.user" value="postgres"/>
