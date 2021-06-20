@@ -35,6 +35,7 @@
 	      <ul>
 	      <li><a href="../Ronda/RondaForm.jsp">Rondas</a></li>
 	        <li><a href="../Pessoa/PessoaForm.jsp">Pessoas</a></li>
+	          <li><a href="../Locomocao/LocomocaoForm.jsp">Locomocao</a></li>
 	       
 	        
 	        <li><a href="#">Básicos</a>
@@ -49,6 +50,7 @@
 	      <ul>
 	        <li><a href="../Pessoa/PessoaCon">Pessoa</a></li>
 	           <li><a href="../Ronda/RondaCon">Ronda</a></li>
+	            <li><a href="../Locomocao/LocomocaoCon">Locomocao</a></li>
 	  </ul>
 	  <li><a href="#">Sair</a></li>
 	</nav>

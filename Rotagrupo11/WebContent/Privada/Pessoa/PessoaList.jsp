@@ -50,7 +50,8 @@
 	<h1>LISTAGEM DE PESSOAS</h1>
 	
 	<form action="PessoaCon">
-		<button type="submit"  name="incluir"><i class="fas fa-plus-circle"></i>Incluir</button>
+	
+<input type="button" onclick="location.href='PessoaForm.jsp';" value="Incluir" />
 		
 		<table border="1" class="table table-hover table-condensed">
 		    <thead>

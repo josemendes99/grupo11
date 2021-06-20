@@ -12,7 +12,6 @@ import javax.persistence.Id;
 public class Locomocao implements Serializable  {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
 	private String descricao;
 	private String placa;
