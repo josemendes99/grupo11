@@ -64,7 +64,20 @@ public class RondaCon extends HttpServlet {
 	
 	
            private void excluirVigilante(HttpServletRequest request, HttpServletResponse response) {
-		
+        	   EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
+       		em.getTransaction().begin(); 	// inicia a transação
+       		// pegar a ronda onde deve ser excluido um vigilante
+       		Ronda r = em.find(Ronda.class, Long.parseLong(request.getParameter("idRonda")));
+       		// Pegar o vigilante escolhido
+       		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("excluirVigilante")));
+       		// remover o vigilante na ronda
+       		r.getVigilantes().remove(p);
+       		em.merge(r); // merge no objeto principal = ronda = vigilantes vão ser armazenados em cascata = Cascade na classe!!!
+       		em.getTransaction().commit(); 	// commit na transação
+       		em.close();
+       		
+       		// depois de armazenado, voltamos para a lista de vigilantes atualizada. Vamos aproveitar o método acima
+       		listarVigilantes(request, response, r.getId());
 		
 	       }
            
