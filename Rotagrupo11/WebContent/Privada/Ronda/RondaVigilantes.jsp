@@ -47,44 +47,36 @@
 	</script>
 	
 	
-	<h1>LISTAGEM DE Vigilantes da Ronda</h1>
+	<h1>LISTAGEM DE VIGILANTES DA RONDA</h1>
 	
 	<form action="RondaCon">
 		
-	<button type="submit" name="voltar"><i class="fas fa-arrow-left"></i> Voltar</button>
-	
-		<button type="submit" name="incluirVigilante"><i class="fas fa-plus-circle"></i> Incluir</button>
+		<button type="submit" name="voltar"><i class="fas fa-plus-circle"></i> Voltar</button>
+		<br>
 		
-		<input type="hidden" name="idRonda" value="${obj.id}">
-	
-		<select name="Vigilantes">
+		<select name="vigilante">
 		    <c:forEach items="${pessoas}" var="p" varStatus="cont">
 		       <option value="${p.id}">${p.nome}</option>
 		    </c:forEach>
 		</select>
-	
-	
- 	
-	
-
+		
+		<button type="submit" name="incluirVigilante"><i class="fas fa-plus-circle"></i> Incluir</button>
+		
+		<input type="hidden" name="idRonda" value="${obj.id}">
+		
 		
 		<table border="1" class="table table-hover table-condensed">
 		    <thead>
 		       <tr>
 		           <td>Id</td>
-         
 		           <td>Nome</td>
-		
-			         
-		           <td></td>
 		           <td></td>
 		       </tr>
 		    </thead>
 			<c:forEach items="${obj.vigilantes}" var="p" varStatus="cont">
 			   <tr>
 			      <td>${p.id}</td>
-			      <td>${p.nome}</td>  
-			          
+			      <td>${p.nome}</td>    
 			      <td><button type="button" onclick="confirmar(this)" name="excluirVigilante" value="${p.id}">Excluir</button></td>
 			   </tr>
 		    </c:forEach>

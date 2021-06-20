@@ -96,7 +96,7 @@ public class RondaCon extends HttpServlet {
        		// pegar a ronda onde deve ser adicionado um vigilante
        		Ronda r = em.find(Ronda.class, Long.parseLong(request.getParameter("idRonda")));
        		// Pegar o vigilante escolhido
-       		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("Vigilantes"))); // vigilante
+       		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("vigilante"))); // vigilante
        		// adiconar o vigilante na ronda
        		r.getVigilantes().add(p);
        		em.merge(r); // merge no objeto principal = ronda = vigilantes vão ser armazenados em cascata = Cascade na classe!!!
