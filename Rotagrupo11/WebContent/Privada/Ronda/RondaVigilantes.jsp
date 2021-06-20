@@ -17,7 +17,7 @@
 	<jsp:include page="../fragmentos/Cabecalho.jsp"></jsp:include>
 	
 		<script type="text/javascript">
-	    function confirmar(){
+	    function confirmar(excluir){
 	    	$.confirm({
 	    	    title: 'Confirmar',
 	    	    content: 'Confirmar a exclusão?',
@@ -28,8 +28,8 @@
 	    	        	text: 'Sim',
 	    	            btnClass: 'btn-orange',
 	    	            action: function(){ 
-	    	            	$("#excluir").attr("type", "submit");
-	    	            	$("#excluir").click();
+	    	            	$(excluir).attr("type", "submit");
+	    	            	excluir.click();
 	    	        	}
 	    	        },
 	    	        Nao: { 
@@ -47,33 +47,45 @@
 	</script>
 	
 	
-	<h1>LISTAGEM DE PESSOAS</h1>
+	<h1>LISTAGEM DE Vigilantes da Ronda</h1>
 	
-	<form action="PessoaCon">
-		<button type="submit"  name="incluir"><i class="fas fa-plus-circle"></i>Incluir</button>
+	<form action="RondaCon">
+		
+	<button type="submit" name="voltar"><i class="fas fa-arrow-left"></i> Voltar</button>
+	
+		<button type="submit" name="incluirVigilante"><i class="fas fa-plus-circle"></i> Incluir</button>
+		
+		<input type="hidden" name="idRonda" value="${obj.id}">
+	
+		<select name="Vigilantes">
+		    <c:forEach items="${pessoas}" var="p" varStatus="cont">
+		       <option value="${p.id}">${p.nome}</option>
+		    </c:forEach>
+		</select>
+	
+	
+ 	
+	
+
 		
 		<table border="1" class="table table-hover table-condensed">
 		    <thead>
 		       <tr>
 		           <td>Id</td>
+         
 		           <td>Nome</td>
-		           <td>loginApp</td>
-		           <td>senha</td>
-		         
+		
+			         
 		           <td></td>
 		           <td></td>
 		       </tr>
 		    </thead>
-			<c:forEach items="${lista}" var="p" varStatus="cont">
+			<c:forEach items="${obj.vigilantes}" var="p" varStatus="cont">
 			   <tr>
 			      <td>${p.id}</td>
-			      <td>${p.nome}</td> 
-			      <td>${p.loginApp}</td>  
-			       <td>${p.senha}</td>       
-			      
-			     
-			      <td><button type="submit" name="alterar" value="${p.id}">Alterar</button></td>
-			      <td><button type="button" onclick="confirmar()" id="excluir" name="excluir" value="${p.id}">Excluir</button></td>
+			      <td>${p.nome}</td>  
+			          
+			      <td><button type="button" onclick="confirmar(this)" name="excluirVigilante" value="${p.id}">Excluir</button></td>
 			   </tr>
 		    </c:forEach>
 		</table>

@@ -73,7 +73,7 @@
 			      <td>${p.longUltima}</td>      
 			        
 			      
-			     
+			      <td><button type="submit" name="Vigilantes" value="${p.id}">Vigilates</button></td>
 			      <td><button type="submit" name="alterar" value="${p.id}">Alterar</button></td>
 			      <td><button type="button" onclick="confirmar()" id="excluir" name="excluir" value="${p.id}">Excluir</button></td>
 			   </tr>

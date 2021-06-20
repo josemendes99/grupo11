@@ -70,7 +70,8 @@ public class PessoaCon extends HttpServlet {
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		
 	EntityManager em = JpaUtil.getEntityManager(); 
-		Pessoa p = new Pessoa(request.getParameter("nome"),
+		Pessoa p = new Pessoa(Long.parseLong(request.getParameter("id")),
+				request.getParameter("nome"),
 				request.getParameter("loginApp"),
 				request.getParameter("senha"));
 	

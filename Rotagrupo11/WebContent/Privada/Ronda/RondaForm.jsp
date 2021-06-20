@@ -11,6 +11,14 @@
 		<fieldset>
 		    <legend>Formulário:</legend>
 	
+	
+	<div class="row">
+				<div class="col-md-2">
+					<label>id</label>
+	        		<input class="form-control" type="number" name="id" value="${obj.id}">
+				</div>
+			</div>
+			
 			<div class="row">
 				<div class="col-md-2">
 					<label>lat</label>

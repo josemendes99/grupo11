@@ -15,8 +15,8 @@ public class Ronda implements Serializable {
 
 	   
 	@Id
-	@GeneratedValue
-	private long Id;
+	
+	private long id;
 	private Date DataHoraInicio;
 	private Date DataHoraFim;
 	private float latUltima;
@@ -38,10 +38,15 @@ public class Ronda implements Serializable {
 	
 	
 	
-	public Ronda( Date dataHoraInicio, Date dataHoraFim, float latUltima, float longUltima, Date dataHoraUltima,
+	
+
+
+
+
+	public Ronda(long id, Date dataHoraInicio, Date dataHoraFim, float latUltima, float longUltima, Date dataHoraUltima,
 			List<Pessoa> vigilantes, Locomocao locomocao) {
 		super();
-		
+		this.id = id;
 		this.DataHoraInicio = dataHoraInicio;
 		this.DataHoraFim = dataHoraFim;
 		this.latUltima = latUltima;
@@ -55,12 +60,17 @@ public class Ronda implements Serializable {
 
 
 
+
+
+
+
+
 	public long getId() {
-		return this.Id;
+		return this.id;
 	}
 
-	public void setId(long Id) {
-		this.Id = Id;
+	public void setId(long id) {
+		this.id = id;
 	}   
 	public Date getDataHoraInicio() {
 		return this.DataHoraInicio;

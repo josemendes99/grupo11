@@ -11,7 +11,12 @@
 		<fieldset>
 		    <legend>Formulário:</legend>
 	
-			
+			<div class="row">
+				<div class="col-md-5">
+			        <label>id</label>
+			        <input class="form-control"  type="text" name="id" value="${obj.id}">			
+				</div>
+			</div>
 	
 			<div class="row">
 				<div class="col-md-5">

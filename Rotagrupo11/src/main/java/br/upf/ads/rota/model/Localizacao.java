@@ -5,6 +5,7 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -13,7 +14,7 @@ public class Localizacao implements Serializable {
 	
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private Date dataHora;
 	private float lat;

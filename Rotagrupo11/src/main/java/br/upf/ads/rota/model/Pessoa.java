@@ -5,6 +5,7 @@ import java.util.Base64;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
@@ -12,20 +13,28 @@ import javax.persistence.Lob;
 public class Pessoa implements Serializable { 
 	 
 	@Id
-	@GeneratedValue
 	private Long id;
 	private String nome;
 	private String loginApp;
 	private String senha;
 	
 	
+
 	
-	public Pessoa( String nome, String loginApp, String senha) {
+	
+
+
+
+	public Pessoa(Long id, String nome, String loginApp, String senha) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.loginApp = loginApp;
 		this.senha = senha;
 	}
+
+
+
 
 
 
