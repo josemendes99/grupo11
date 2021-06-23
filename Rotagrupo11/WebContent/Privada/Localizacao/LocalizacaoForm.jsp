@@ -7,38 +7,37 @@
 </head>
 <body>
 	<jsp:include page="../fragmentos/Cabecalho.jsp"></jsp:include>
-	<form action="RondaCon" method="post">
+	<form action="LocalizacaoCon" method="post">
 		<fieldset>
 		    <legend>Formulário:</legend>
 	
-	
-	<div class="row">
-				<div class="col-md-2">
-					<label>id</label>
-	        		<input class="form-control" type="number" name="id" value="${obj.id}">
+			<div class="row">
+				<div class="col-md-5">
+			        <label>id</label>
+			        <input class="form-control"  type="text" name="id" value="${obj.id}">			
 				</div>
 			</div>
-			
+	
+			<div class="row">
+				<div class="col-md-5">
+			        <label>dataHora</label>
+			        <input class="form-control"  type="text" name="dataHora" value="${obj.dataHora}">			
+				</div>
+			</div>
+	
 			<div class="row">
 				<div class="col-md-2">
-					<label>lat</label>
-	        		<input class="form-control" type="number" name="latUltima" value="${obj.latUltima}">
+			        <label>lat</label>
+			        <input class="form-control"  type="text" name="lat" value="${obj.lat}">			
 				</div>
 			</div>
+	
 			<div class="row">
 				<div class="col-md-2">
-					<label>log</label>
-	        		<input class="form-control" type="number" name="longUltima" value="${obj.longUltima}">
+			        <label>log</label>
+			        <input class="form-control"  type="text" name="log" value="${obj.log}">			
 				</div>
 			</div>
-	
-	
-		<select name="Locomocao">
-		    <c:forEach items="${pessoas}" var="p" varStatus="cont">
-		       <option value="${p.id}">${p.nome}</option>
-		    </c:forEach>
-		</select>
-	
 	
 	
 	

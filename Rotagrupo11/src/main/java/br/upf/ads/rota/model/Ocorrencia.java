@@ -6,16 +6,18 @@ import java.util.Arrays;
 import java.util.Base64;
   
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
 public class Ocorrencia implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	 @GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private Date dataHora;
@@ -31,7 +33,7 @@ public class Ocorrencia implements Serializable {
 	
 	
 
-	public Ocorrencia(long id, Date dataHora, String titulo, String descricao, float lat, float log, byte[] foto) {
+	public Ocorrencia(long id, Date dataHora, String titulo, String descricao, float lat, float log) {
 		super();
 		this.id = id;
 		this.dataHora = dataHora;
@@ -39,7 +41,7 @@ public class Ocorrencia implements Serializable {
 		this.descricao = descricao;
 		this.lat = lat;
 		this.log = log;
-		this.foto = foto;
+
 	}
 
 

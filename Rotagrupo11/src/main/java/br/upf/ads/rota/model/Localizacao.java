@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -14,7 +12,6 @@ public class Localizacao implements Serializable {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private Date dataHora;
 	private float lat;
@@ -29,6 +26,9 @@ public class Localizacao implements Serializable {
 
 
 
+	
+	
+	
 	public Localizacao(long id, Date dataHora, float lat, float log) {
 		super();
 		this.id = id;
@@ -36,9 +36,12 @@ public class Localizacao implements Serializable {
 		this.lat = lat;
 		this.log = log;
 	}
-	
-	
-	
+
+
+
+
+
+
 	public long getId() {
 		return id;
 	}

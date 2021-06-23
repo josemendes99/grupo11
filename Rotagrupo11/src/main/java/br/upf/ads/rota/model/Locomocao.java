@@ -101,6 +101,13 @@ public class Locomocao implements Serializable  {
 			return false;
 		return true;
 	}
+
+
+
+	public Locomocao(long id) {
+		super();
+		this.id = id;
+	}
 	
 	
 	

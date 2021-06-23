@@ -47,20 +47,19 @@
 	</script>
 	
 	
-	<h1>LISTAGEM DE Rondas</h1>
+	<h1>LISTAGEM DE LocalizacaoS</h1>
 	
-	<form action="RondaCon">
-		<button type="submit" name="incluir"><i class="fas fa-plus-circle"></i> Incluir</button>
+	<form action="LocalizacaoCon">
+	
+<input type="button" onclick="location.href='LocalizacaoForm.jsp';" value="Incluir" />
 		
 		<table border="1" class="table table-hover table-condensed">
 		    <thead>
 		       <tr>
 		           <td>Id</td>
-		           
-		           <td>latUltima</td>
-		       
-		           <td>longUltima</td>
-		         
+		           <td>Nome</td>
+		           <td>loginApp</td>
+		           <td>senha</td>
 		         
 		           <td></td>
 		           <td></td>
@@ -69,12 +68,11 @@
 			<c:forEach items="${lista}" var="p" varStatus="cont">
 			   <tr>
 			      <td>${p.id}</td>
-			      <td>${p.latUltima}</td>  
-			      <td>${p.longUltima}</td>      
-			        
+			      <td>${p.dataHora}</td> 
+			      <td>${p.lat}</td>  
+			       <td>${p.log}</td>       
 			      
-			      <td><button type="submit" name="Vigilantes" value="${p.id}">Vigilates</button></td>
-			      <td><button type="submit" name="Locomocao" value="${p.id}">Locomocao</button></td>
+			     
 			      <td><button type="submit" name="alterar" value="${p.id}">Alterar</button></td>
 			      <td><button type="button" onclick="confirmar()" id="excluir" name="excluir" value="${p.id}">Excluir</button></td>
 			   </tr>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.upf.ads.rota.jpa.JpaUtil;
+import br.upf.ads.rota.model.Locomocao;
 import br.upf.ads.rota.model.Pessoa;
 import br.upf.ads.rota.model.Ronda;
 import br.upf.ads.rota.uteis.Upload;
@@ -56,6 +57,18 @@ public class RondaCon extends HttpServlet {
 		}else if (request.getParameter("excluirVigilante") != null) {
 			 excluirVigilante(request, response);			
 			
+			 //--------------------------------
+			 
+			 
+		}else if (request.getParameter("incluirlocomoção") != null) {
+				 IncluirLocomocao(request, response);			
+			 
+				 
+		}else if (request.getParameter("Locomocao") != null) {
+			Locomocao(request, response);	
+			 
+			 
+			 
 		}else {
 			listar(request, response);
 		}
@@ -63,7 +76,41 @@ public class RondaCon extends HttpServlet {
 	}
 	
 	
-           private void excluirVigilante(HttpServletRequest request, HttpServletResponse response) {
+	
+	
+	
+	
+	
+	 private void IncluirLocomocao(HttpServletRequest request, HttpServletResponse response) {
+			// TODO Auto-generated method stub
+			
+		}
+	 
+	
+	
+	
+	
+           private void Locomocao(HttpServletRequest request, HttpServletResponse response) {
+        	   try {
+       			EntityManager em = JpaUtil.getEntityManager();
+       			List<Locomocao> Locomocao = em.createQuery("from Locomocao").getResultList(); // recuperamos as Rondas do BD
+       			request.setAttribute("Locomocao", Locomocao);
+       			em.close(); 
+       			request.getRequestDispatcher("RondaLocomocao.jsp").forward(request, response);
+       		} catch (Exception e) {
+       			e.printStackTrace();
+       		} 
+		
+	}
+
+           
+           
+           
+           
+           
+           
+           
+		private void excluirVigilante(HttpServletRequest request, HttpServletResponse response) {
         	   EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
        		em.getTransaction().begin(); 	// inicia a transação
        		// pegar a ronda onde deve ser excluido um vigilante
@@ -156,7 +203,7 @@ public class RondaCon extends HttpServlet {
 			Float.parseFloat(request.getParameter("latUltima")), 
 			Float.parseFloat(request.getParameter("longUltima")), 
 			new Date(),
-			new ArrayList(), null);
+			new ArrayList(), new Locomocao(1));
 	
 				
 	
