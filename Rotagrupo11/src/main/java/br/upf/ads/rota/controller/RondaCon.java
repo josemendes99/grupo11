@@ -111,19 +111,19 @@ public class RondaCon extends HttpServlet {
            
            
 		private void excluirVigilante(HttpServletRequest request, HttpServletResponse response) {
-        	   EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
-       		em.getTransaction().begin(); 	// inicia a transação
-       		// pegar a ronda onde deve ser excluido um vigilante
+        	   EntityManager em = JpaUtil.getEntityManager(); 
+       		em.getTransaction().begin(); 	
+       		
        		Ronda r = em.find(Ronda.class, Long.parseLong(request.getParameter("idRonda")));
-       		// Pegar o vigilante escolhido
+       		
        		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("excluirVigilante")));
-       		// remover o vigilante na ronda
+       	
        		r.getVigilantes().remove(p);
-       		em.merge(r); // merge no objeto principal = ronda = vigilantes vão ser armazenados em cascata = Cascade na classe!!!
-       		em.getTransaction().commit(); 	// commit na transação
+       		em.merge(r); 
+       		em.getTransaction().commit(); 	
        		em.close();
        		
-       		// depois de armazenado, voltamos para a lista de vigilantes atualizada. Vamos aproveitar o método acima
+       	
        		listarVigilantes(request, response, r.getId());
 		
 	       }
@@ -151,19 +151,19 @@ public class RondaCon extends HttpServlet {
            
 		
            private void incluirVigilante(HttpServletRequest request, HttpServletResponse response) {
-       		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
-       		em.getTransaction().begin(); 	// inicia a transação
-       		// pegar a ronda onde deve ser adicionado um vigilante
+       		EntityManager em = JpaUtil.getEntityManager(); 
+       		em.getTransaction().begin(); 	
+       	
        		Ronda r = em.find(Ronda.class, Long.parseLong(request.getParameter("idRonda")));
-       		// Pegar o vigilante escolhido
+       	
        		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("vigilante"))); // vigilante
-       		// adiconar o vigilante na ronda
+       		
        		r.getVigilantes().add(p);
-       		em.merge(r); // merge no objeto principal = ronda = vigilantes vão ser armazenados em cascata = Cascade na classe!!!
-       		em.getTransaction().commit(); 	// commit na transação
+       		em.merge(r); 
+       		em.getTransaction().commit(); 	
        		em.close();
        		
-       		// depois de armazenado, voltamos para a lista de vigilantes atualizada. Vamos aproveitar o método acima
+       		
        		listarVigilantes(request, response, r.getId());
        		
        	}	
@@ -178,7 +178,7 @@ public class RondaCon extends HttpServlet {
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			EntityManager em = JpaUtil.getEntityManager();
-			List<Ronda> lista = em.createQuery("from Ronda").getResultList(); // recuperamos as Rondas do BD
+			List<Ronda> lista = em.createQuery("from Ronda").getResultList(); 
 			request.setAttribute("lista", lista);
 			em.close(); 
 			request.getRequestDispatcher("RondaList.jsp").forward(request, response);
@@ -203,7 +203,7 @@ public class RondaCon extends HttpServlet {
 			Float.parseFloat(request.getParameter("latUltima")), 
 			Float.parseFloat(request.getParameter("longUltima")), 
 			new Date(),
-			new ArrayList(), new Locomocao(1));
+			new ArrayList(), null);
 	
 				
 	
@@ -220,10 +220,10 @@ public class RondaCon extends HttpServlet {
 
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response) {
-		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
-		em.getTransaction().begin(); 	// inicia a transação
-		em.remove(em.find(Ronda.class, Long.parseLong(request.getParameter("excluir"))));	// excluir o objeto no BD
-		em.getTransaction().commit(); 	// commit na transação
+		EntityManager em = JpaUtil.getEntityManager(); 
+		em.getTransaction().begin(); 	
+		em.remove(em.find(Ronda.class, Long.parseLong(request.getParameter("excluir"))));	
+		em.getTransaction().commit(); 	
 		em.close();
 		listar(request, response);
 	}

@@ -21,23 +21,19 @@
 			
 			<div class="row">
 				<div class="col-md-2">
-					<label>lat</label>
-	        		<input class="form-control" type="number" name="latUltima" value="${obj.latUltima}">
+					<label>latitude</label>
+	        		<input class="form-control" type="number" name="latUltima" step="0.01" value="${obj.latUltima}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-2">
-					<label>log</label>
-	        		<input class="form-control" type="number" name="longUltima" value="${obj.longUltima}">
+					<label>logitude</label>
+	        		<input class="form-control" type="number" step="0.01" name="longUltima" value="${obj.longUltima}">
 				</div>
 			</div>
 	
 	
-		<select name="Locomocao">
-		    <c:forEach items="${pessoas}" var="p" varStatus="cont">
-		       <option value="${p.id}">${p.nome}</option>
-		    </c:forEach>
-		</select>
+		
 	
 	
 	

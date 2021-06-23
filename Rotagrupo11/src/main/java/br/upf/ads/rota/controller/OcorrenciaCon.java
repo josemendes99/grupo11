@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.upf.ads.rota.jpa.JpaUtil;
 import br.upf.ads.rota.model.Ocorrencia;
+import br.upf.ads.rota.uteis.Upload;
+import net.iamvegan.multipartrequest.HttpServletMultipartRequest;
 
 /**
  * Servlet implementation class OcorrenciaCon
@@ -30,6 +32,14 @@ public class OcorrenciaCon extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request = new HttpServletMultipartRequest(
+				request,
+				HttpServletMultipartRequest.MAX_CONTENT_LENGTH,
+				HttpServletMultipartRequest.SAVE_TO_TMPDIR,
+				HttpServletMultipartRequest.IGNORE_ON_MAX_LENGTH,
+				HttpServletMultipartRequest.DEFAULT_ENCODING);		
+		
+		
 		if (request.getParameter("incluir") != null) {
 			incluir(request, response);
 		} else if (request.getParameter("alterar") != null) {
@@ -40,16 +50,58 @@ public class OcorrenciaCon extends HttpServlet {
 			gravar(request, response);			
 		} else if (request.getParameter("cancelar") != null) {
 			cancelar(request, response);			
+		} else if (request.getParameter("alterarFoto") != null) {
+			alterarFoto(request, response);
+		} else if (request.getParameter("gravarFoto") != null) {
+			gravarFoto(request, response);	
 		} else {
 			listar(request, response);
 		}
 		
 	}
+	
+	private void alterarFoto(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			EntityManager em = JpaUtil.getEntityManager();
+			Long n= Long.parseLong(request.getParameter("alterarFoto"));
+			Ocorrencia obj = em.find(Ocorrencia.class,n );
+			request.setAttribute("obj", obj);
+			em.close();
+			request.getRequestDispatcher("OcorrenciaFoto.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+	}
+	
+	private void gravarFoto(HttpServletRequest request, HttpServletResponse response) {
+		EntityManager em = JpaUtil.getEntityManager(); 
+		// ----------------------------------------------------------------------------------
+		em.getTransaction().begin(); 
+		
+		
+		if (request.getParameter("foto") != null) {
+			String nomeArquivo = "Foto"+request.getParameter("id")+".jpg";
+			 
+			String caminho = getServletConfig().getServletContext().getRealPath("/") + "Privada/Ocorrencia/uploads";
+			
+			Upload.copiarArquivo((HttpServletMultipartRequest) request, "foto", caminho, nomeArquivo);
+			
+			
+		}		
+		
+		
+		em.getTransaction().commit(); 	
+		em.close();
+		listar(request, response);
+	}	
+	
+	
+	
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			EntityManager em = JpaUtil.getEntityManager();
-			List<Ocorrencia> lista = em.createQuery("from Ocorrencia").getResultList(); // recuperamos as pessoas do BD
+			List<Ocorrencia> lista = em.createQuery("from Ocorrencia").getResultList(); // recuperamos as Ocorrencias do BD
 			request.setAttribute("lista", lista);
 			em.close();
 			request.getRequestDispatcher("OcorrenciaList.jsp").forward(request, response);
@@ -65,18 +117,22 @@ public class OcorrenciaCon extends HttpServlet {
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
 		
-		Date d = null;
-		try {
-			d = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataHora"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+
+	
 		
-		Ocorrencia p = new Ocorrencia (1, d, "aaa", "aaa", "00", "00");
+		float l = Float.parseFloat(request.getParameter("lat"));
+		float lo = Float.parseFloat(request.getParameter("log"));
+		
+		Long n= Long.parseLong(request.getParameter("id"));
+		
+		
+		Ocorrencia p = new Ocorrencia(n, new Date(), request.getParameter("titulo"),
+				 request.getParameter("descricao"), l, lo);
+				                
 		// ----------------------------------------------------------------------------------
-		em.getTransaction().begin(); 	// inicia a transação
-		em.merge(p); 					// incluir ou alterar o objeto no BD
-		em.getTransaction().commit(); 	// commit na transação
+		em.getTransaction().begin(); 	
+		em.merge(p); 					
+		em.getTransaction().commit(); 	
 		em.close();
 		listar(request, response);
 	}
@@ -84,8 +140,8 @@ public class OcorrenciaCon extends HttpServlet {
 	private void excluir(HttpServletRequest request, HttpServletResponse response) {
 		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
 		em.getTransaction().begin(); 	// inicia a transação
-		em.remove(em.find(Ocorrencia.class,  Long.parseLong(request.getParameter("excluir"))));	// excluir o objeto no BD
-		em.getTransaction().commit(); 	// commit na transação
+		em.remove(em.find(Ocorrencia.class, Long.parseLong(request.getParameter("excluir"))));	// excluir o objeto no BD
+		em.getTransaction().commit(); 	
 		em.close();
 		listar(request, response);
 	}
@@ -93,7 +149,7 @@ public class OcorrenciaCon extends HttpServlet {
 	private void alterar(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			EntityManager em = JpaUtil.getEntityManager();
-			Ocorrencia obj = em.find(Ocorrencia.class,  Long.parseLong(request.getParameter("alterar")));
+			Ocorrencia obj = em.find(Ocorrencia.class, Long.parseLong(request.getParameter("alterar")));
 			request.setAttribute("obj", obj);
 			em.close();
 			request.getRequestDispatcher("OcorrenciaForm.jsp").forward(request, response);

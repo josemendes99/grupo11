@@ -21,21 +21,21 @@
 			<div class="row">
 				<div class="col-md-5">
 			        <label>dataHora</label>
-			        <input class="form-control"  type="text" name="dataHora" value="${obj.dataHora}">			
+			        <input class="form-control"  type="date"  name="dataHora" value="${obj.dataHora}">			
 				</div>
 			</div>
 	
 			<div class="row">
 				<div class="col-md-2">
-			        <label>lat</label>
-			        <input class="form-control"  type="text" name="lat" value="${obj.lat}">			
+			        <label>latitude</label>
+			        <input class="form-control"  type="text" step="0.01" name="lat" value="${obj.lat}">			
 				</div>
 			</div>
 	
 			<div class="row">
 				<div class="col-md-2">
-			        <label>log</label>
-			        <input class="form-control"  type="text" name="log" value="${obj.log}">			
+			        <label>logitude</label>
+			        <input class="form-control"  type="text" step="0.01" name="log" value="${obj.log}">			
 				</div>
 			</div>
 	

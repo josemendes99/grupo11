@@ -7,13 +7,13 @@
 </head>
 <body>
 	<jsp:include page="../fragmentos/Cabecalho.jsp"></jsp:include>
-	<form action="PessoaCon" method="post" enctype="multipart/form-data">
+	<form action="OcorrenciaCon" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Formulário:</legend>
 
 			<div class="row">
 				<div class="col-md-2">
-					<label>id</label> <input class="form-control" type="number"
+					<label>Id</label> <input class="form-control" type="number"
 						readonly="readonly" name="id" value="${obj.id}">
 				</div>
 			</div>
@@ -21,29 +21,7 @@
 			<div class="row">
 				<div class="col-md-5">
 					<label>titulo</label> <input class="form-control" type="text"
-						name="titulo" readonly="readonly" value="${obj.titulo}">
-				</div>
-			</div>
-			
-				<div class="row">
-				<div class="col-md-5">
-					<label>descricao</label> <input class="form-control" type="text"
 						name="descricao" readonly="readonly" value="${obj.descricao}">
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-5">
-					<label>lat</label> <input class="form-control" type="text"
-						name="lat"  value="${obj.lat}">
-				</div>
-			</div>
-			
-			
-			<div class="row">
-				<div class="col-md-5">
-					<label>log</label> <input class="form-control" type="text"
-						name="log"  value="${obj.log}">
 				</div>
 			</div>
 
@@ -65,10 +43,7 @@
 
 					<br>
 					
-					<div id="areaImagemBD">
-						<img name="imagemBD" id="imagemBD" width="300" height="300"
-							 src="data:image/jpg;base64,${obj.fotoBase64}" />
-					</div>
+					
 
 
 

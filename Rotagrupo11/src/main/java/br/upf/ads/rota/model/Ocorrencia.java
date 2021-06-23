@@ -29,12 +29,15 @@ public class Ocorrencia implements Serializable {
 	
 	
 	
-	
+	@Lob
+	private byte[] foto;
 
 	
 
 
 	
+
+
 
 	public Ocorrencia(Long id, Date dataHora, String titulo, String descricao, float lat, float log) {
 		super();
@@ -44,6 +47,18 @@ public class Ocorrencia implements Serializable {
 		this.descricao = descricao;
 		this.lat = lat;
 		this.log = log;
+	}
+
+
+ 
+
+
+
+
+
+
+	public Ocorrencia() {
+		super();
 	}
 
 

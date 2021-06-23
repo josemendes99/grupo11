@@ -75,7 +75,7 @@ public class LocalizacaoCon extends HttpServlet {
 		
 		Date d = null;
 		try {
-			d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(request.getParameter("dataHora"));
+			d = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataHora"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -88,7 +88,7 @@ public class LocalizacaoCon extends HttpServlet {
 	
 	
 	Localizacao p = new Localizacao(n,
-			d, l, lo);
+			new Date(), l, lo);
 			
 
 	

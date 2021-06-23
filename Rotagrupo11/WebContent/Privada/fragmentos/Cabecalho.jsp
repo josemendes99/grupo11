@@ -36,15 +36,11 @@
 	      <li><a href="../Ronda/RondaForm.jsp">Rondas</a></li>
 	        <li><a href="../Pessoa/PessoaForm.jsp">Pessoas</a></li>
 	          <li><a href="../Locomocao/LocomocaoForm.jsp">Locomocao</a></li>
-	          <li><a href="../Localizacao/LocalizacaoForm.jsp">Locomocao</a></li>
+	          <li><a href="../Localizacao/LocalizacaoForm.jsp">Localizaçao</a></li>
+	          <li><a href="../Ocorrencia/OcorrenciaForm.jsp">Ocorrencia</a></li>
 	       
 	        
-	        <li><a href="#">Básicos</a>
-	          <ul>
-	            <li><a href="#">Estado ...</a></li>
-	            <li><a href="http://vadikom.com/projects/">Projects</a></li>
-	          </ul>
-	        </li>
+	       
 	      </ul>
 	    </li>
 	     <li><a href="#">Listar</a>
@@ -52,9 +48,10 @@
 	        <li><a href="../Pessoa/PessoaCon">Pessoa</a></li>
 	           <li><a href="../Ronda/RondaCon">Ronda</a></li>
 	            <li><a href="../Locomocao/LocomocaoCon">Locomocao</a></li>
-	            <li><a href="../Localizacao/LocalizacaoCon">Locomocao</a></li>
+	            <li><a href="../Localizacao/LocalizacaoCon">Localizaçao</a></li>
+	             <li><a href="../Ocorrencia/OcorrenciaCon">Ocorrencia</a></li>
 	  </ul>
-	  <li><a href="#">Sair</a></li>
+	  
 	</nav>
 
 
