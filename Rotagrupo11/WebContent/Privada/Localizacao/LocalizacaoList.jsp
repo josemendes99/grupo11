@@ -57,9 +57,9 @@
 		    <thead>
 		       <tr>
 		           <td>Id</td>
-		           <td>Nome</td>
-		           <td>loginApp</td>
-		           <td>senha</td>
+		           <td>data Hora</td>
+		           <td>latitude </td>
+		           <td>logitude</td>
 		         
 		           <td></td>
 		           <td></td>

@@ -35,7 +35,7 @@
 			<div class="row">
 				<div class="col-md-5">
 					<label>lat</label> <input class="form-control" type="text"
-						name="lat" readonly="readonly" value="${obj.lat}">
+						name="lat"  value="${obj.lat}">
 				</div>
 			</div>
 			
@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="col-md-5">
 					<label>log</label> <input class="form-control" type="text"
-						name="log" readonly="readonly" value="${obj.log}">
+						name="log"  value="${obj.log}">
 				</div>
 			</div>
 

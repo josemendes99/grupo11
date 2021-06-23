@@ -1,7 +1,7 @@
 package br.upf.ads.rota.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,7 +12,7 @@ public class Localizacao implements Serializable {
 	
 	
 	@Id
-	private long id;
+	private Long id;
 	private Date dataHora;
 	private float lat;
 	private float log;
@@ -20,22 +20,40 @@ public class Localizacao implements Serializable {
 	
 
 	
-	public Localizacao() {
-		super();
-	}
 
 
 
-	
-	
-	
-	public Localizacao(long id, Date dataHora, float lat, float log) {
+
+	public Localizacao(Long id, Date dataHora, float lat, float log) {
 		super();
 		this.id = id;
 		this.dataHora = dataHora;
 		this.lat = lat;
 		this.log = log;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public Localizacao() {
+		super();
+	}
+
+
+
+
+
+
+
 
 
 

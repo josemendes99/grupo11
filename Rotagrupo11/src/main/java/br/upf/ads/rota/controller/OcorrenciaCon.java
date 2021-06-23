@@ -72,12 +72,7 @@ public class OcorrenciaCon extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		Ocorrencia p = new Ocorrencia ( Long.parseLong (request.getParameter("id")), 
-				    new Date(),
-					request.getParameter("titulo"), 
-					request.getParameter("descricao"),
-					request.getParameter("lat"),
-					request.getParameter("log"));
+		Ocorrencia p = new Ocorrencia (1, d, "aaa", "aaa", "00", "00");
 		// ----------------------------------------------------------------------------------
 		em.getTransaction().begin(); 	// inicia a transação
 		em.merge(p); 					// incluir ou alterar o objeto no BD

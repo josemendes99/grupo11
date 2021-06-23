@@ -1,6 +1,8 @@
 package br.upf.ads.rota.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,11 +72,24 @@ public class LocalizacaoCon extends HttpServlet {
 
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		
+		
+		Date d = null;
+		try {
+			d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(request.getParameter("dataHora"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
+		Long n= Long.parseLong(request.getParameter("id"));
+		float l = Float.parseFloat(request.getParameter("lat"));
+		float lo = Float.parseFloat(request.getParameter("log"));
 	EntityManager em = JpaUtil.getEntityManager(); 
-	Localizacao p = new Localizacao((Long.parseLong(request.getParameter("id")),
-			new Date(),
-			request.getParameter("lat"),
-			request.getParameter("log")));
+	
+	
+	Localizacao p = new Localizacao(n,
+			d, l, lo);
+			
 
 	
 				

@@ -1,10 +1,11 @@
 package br.upf.ads.rota.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+
 import java.util.Arrays;
 import java.util.Base64;
-  
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -18,8 +19,8 @@ public class Ocorrencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private long id;
 	
+	private Long id;
 	private Date dataHora;
 	private String titulo;
 	private String descricao;
@@ -27,13 +28,15 @@ public class Ocorrencia implements Serializable {
 	private float log;
 	
 	
-	@Lob
-	private byte[] foto;
-	
 	
 	
 
-	public Ocorrencia(long id, Date dataHora, String titulo, String descricao, float lat, float log) {
+	
+
+
+	
+
+	public Ocorrencia(Long id, Date dataHora, String titulo, String descricao, float lat, float log) {
 		super();
 		this.id = id;
 		this.dataHora = dataHora;
@@ -41,23 +44,38 @@ public class Ocorrencia implements Serializable {
 		this.descricao = descricao;
 		this.lat = lat;
 		this.log = log;
-
 	}
 
 
-	public Ocorrencia() {
-		super();
-	}
 
 
-	public long getId() {
+
+
+
+
+
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(long id) {
+
+
+
+
+
+
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+
+
+
+
+
 
 
 	public Date getDataHora() {
@@ -65,9 +83,23 @@ public class Ocorrencia implements Serializable {
 	}
 
 
+
+
+
+
+
+
+
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
 	}
+
+
+
+
+
+
+
 
 
 	public String getTitulo() {
@@ -75,9 +107,23 @@ public class Ocorrencia implements Serializable {
 	}
 
 
+
+
+
+
+
+
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
+
+
+
+
+
+
 
 
 	public String getDescricao() {
@@ -85,9 +131,23 @@ public class Ocorrencia implements Serializable {
 	}
 
 
+
+
+
+
+
+
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+
+
+
+
+
+
 
 
 	public float getLat() {
@@ -95,9 +155,23 @@ public class Ocorrencia implements Serializable {
 	}
 
 
+
+
+
+
+
+
+
 	public void setLat(float lat) {
 		this.lat = lat;
 	}
+
+
+
+
+
+
+
 
 
 	public float getLog() {
@@ -105,9 +179,23 @@ public class Ocorrencia implements Serializable {
 	}
 
 
+
+
+
+
+
+
+
 	public void setLog(float log) {
 		this.log = log;
 	}
+
+
+
+
+
+
+
 
 
 	public byte[] getFoto() {
@@ -115,29 +203,35 @@ public class Ocorrencia implements Serializable {
 	}
 
 
+
+
+
+
+
+
+
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
-	
-	
-	public String getFotoBase64() {
-		if (foto != null)
-		   return new String(Base64.getEncoder().encode(foto));
-		else
-		   return "";
+
+
+
+
+
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	
-	
-	
-	
-	
 
-	@Override
-	public String toString() {
-		return "Ocorrencia [id=" + id + ", dataHora=" + dataHora + ", titulo=" + titulo + ", descricao=" + descricao
-				+ ", lat=" + lat + ", log=" + log + ", foto=" + Arrays.toString(foto) + "]";
-	}
+
+
+
+
+
 
 
 	@Override
@@ -147,12 +241,19 @@ public class Ocorrencia implements Serializable {
 		result = prime * result + ((dataHora == null) ? 0 : dataHora.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + Arrays.hashCode(foto);
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + Float.floatToIntBits(lat);
 		result = prime * result + Float.floatToIntBits(log);
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
+
+
+
+
+
+
+
 
 
 	@Override
@@ -176,7 +277,10 @@ public class Ocorrencia implements Serializable {
 			return false;
 		if (!Arrays.equals(foto, other.foto))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (Float.floatToIntBits(lat) != Float.floatToIntBits(other.lat))
 			return false;
@@ -189,6 +293,11 @@ public class Ocorrencia implements Serializable {
 			return false;
 		return true;
 	}
+
+	
+	
+	
+	
 	
 	
 	
@@ -196,3 +305,5 @@ public class Ocorrencia implements Serializable {
 	
 
 }
+
+
