@@ -56,7 +56,7 @@
 		
 		
 		
-		<button type="submit" name="incluirLocomocao"><i class="fas fa-plus-circle"></i> Incluir</button>
+		<button type="submit" name="incluirLocomocao"><i class="fas fa-arrow-left"></i></i></i> Incluir</button>
 			<input type="hidden" name="idRonda" value="${obj.id}">
 		
 	<select name="Locomocao">

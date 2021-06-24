@@ -47,7 +47,7 @@
 	</script>
 	
 	
-	<h1>LISTAGEM DE PESSOAS</h1>
+	<h1>LISTAGEM DE Locomoçao</h1>
 	
 	<form action="LocomocaoCon">
 	

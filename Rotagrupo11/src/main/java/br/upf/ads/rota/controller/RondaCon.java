@@ -60,15 +60,6 @@ public class RondaCon extends HttpServlet {
 			 //--------------------------------
 			 
 			 
-		}else if (request.getParameter("incluirlocomoção") != null) {
-				 IncluirLocomocao(request, response);			
-			 
-				 
-		}else if (request.getParameter("Locomocao") != null) {
-			Locomocao(request, response);	
-			 
-			 
-			 
 		}else {
 			listar(request, response);
 		}
@@ -77,14 +68,7 @@ public class RondaCon extends HttpServlet {
 	
 	
 	
-	
-	
-	
-	
-	 private void IncluirLocomocao(HttpServletRequest request, HttpServletResponse response) {
-			// TODO Auto-generated method stub
-			
-		}
+	 
 	 
 	
 	
@@ -156,7 +140,7 @@ public class RondaCon extends HttpServlet {
        	
        		Ronda r = em.find(Ronda.class, Long.parseLong(request.getParameter("idRonda")));
        	
-       		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("vigilante"))); // vigilante
+       		Pessoa p = em.find(Pessoa.class, Long.parseLong(request.getParameter("vigilante"))); 
        		
        		r.getVigilantes().add(p);
        		em.merge(r); 
@@ -197,13 +181,14 @@ public class RondaCon extends HttpServlet {
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		
 	EntityManager em = JpaUtil.getEntityManager(); 
+	Locomocao locomocao = em.find(Locomocao.class, Long.parseLong(request.getParameter("locomocao")) );
 	Ronda p = new Ronda(Long.parseLong(request.getParameter("id")),
 			new Date(), 
 			new Date(), 
 			Float.parseFloat(request.getParameter("latUltima")), 
 			Float.parseFloat(request.getParameter("longUltima")), 
 			new Date(),
-			new ArrayList(), null);
+			new ArrayList(), locomocao);
 	
 				
 	
@@ -234,6 +219,8 @@ public class RondaCon extends HttpServlet {
 		try {
 			EntityManager em = JpaUtil.getEntityManager();
 			Ronda obj = em.find(Ronda.class,  Long.parseLong(request.getParameter("alterar")));
+			List<Locomocao> locomo = em.createQuery("from Locomocao").getResultList();
+			request.setAttribute("locomo", locomo);
 			request.setAttribute("obj", obj);
 			em.close();
 			request.getRequestDispatcher("RondaForm.jsp").forward(request, response);
@@ -244,10 +231,14 @@ public class RondaCon extends HttpServlet {
 
 	private void incluir(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			EntityManager em = JpaUtil.getEntityManager();
 			Ronda obj = new Ronda();
+			List<Locomocao> locomo = em.createQuery("from Locomocao").getResultList();
 			request.setAttribute("obj", obj);
-			request.getRequestDispatcher("RondaForm.jsp").forward(request, response);
+			request.setAttribute("locomo", locomo);
 			
+			request.getRequestDispatcher("RondaForm.jsp").forward(request, response);
+			em.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 		

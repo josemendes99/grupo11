@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,17 @@
 	
 	
 		
-	
+	<br>
+			<div class="row">
+				<div class="col-md-7">
+					<label for="locomocao">Locomocao:</label> 
+					<select name = "locomocao" id = "locomocao">
+						<c:forEach items="${locomo}" var = "l" varStatus="index">
+							<option value="${l.id}">${l.id} - ${l.descricao}
+						</c:forEach>
+					</select>
+				</div>
+			</div>
 	
 	
 	

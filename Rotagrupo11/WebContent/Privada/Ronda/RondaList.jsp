@@ -60,6 +60,7 @@
 		           <td>latUltima</td>
 		       
 		           <td>longUltima</td>
+		            <td>Locomocao</td>
 		         
 		         
 		           <td></td>
@@ -70,11 +71,13 @@
 			   <tr>
 			      <td>${p.id}</td>
 			      <td>${p.latUltima}</td>  
-			      <td>${p.longUltima}</td>      
+			      <td>${p.longUltima}</td>    
+			      <td>${p.locomocao.descricao}</td>
+			      
+			           
 			        
 			      
 			      <td><button type="submit" name="Vigilantes" value="${p.id}">Vigilates</button></td>
-			      <td><button type="submit" name="Locomocao" value="${p.id}">Locomocao</button></td>
 			      <td><button type="submit" name="alterar" value="${p.id}">Alterar</button></td>
 			      <td><button type="button" onclick="confirmar()" id="excluir" name="excluir" value="${p.id}">Excluir</button></td>
 			   </tr>

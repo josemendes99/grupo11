@@ -47,7 +47,7 @@
 	</script>
 	
 	
-	<h1>LISTAGEM DE LocalizacaoS</h1>
+	<h1>LISTAGEM DE Localizacao</h1>
 	
 	<form action="LocalizacaoCon">
 	

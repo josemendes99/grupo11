@@ -33,10 +33,10 @@
 	    <li><a href="../Home/Home.jsp">Home</a></li>
 	    <li><a href="#">Cadastros</a>
 	      <ul>
-	      <li><a href="../Ronda/RondaForm.jsp">Rondas</a></li>
+	      <li><a href="../Ronda/RondaCon">Ronda</a></li>
 	        <li><a href="../Pessoa/PessoaForm.jsp">Pessoas</a></li>
 	          <li><a href="../Locomocao/LocomocaoForm.jsp">Locomocao</a></li>
-	          <li><a href="../Localizacao/LocalizacaoForm.jsp">Localizaçao</a></li>
+	          <li><a href="../Localizacao/LocalizacaoForm.jsp">Localização</a></li>
 	          <li><a href="../Ocorrencia/OcorrenciaForm.jsp">Ocorrencia</a></li>
 	       
 	        
@@ -48,7 +48,7 @@
 	        <li><a href="../Pessoa/PessoaCon">Pessoa</a></li>
 	           <li><a href="../Ronda/RondaCon">Ronda</a></li>
 	            <li><a href="../Locomocao/LocomocaoCon">Locomocao</a></li>
-	            <li><a href="../Localizacao/LocalizacaoCon">Localizaçao</a></li>
+	            <li><a href="../Localizacao/LocalizacaoCon">Localização</a></li>
 	             <li><a href="../Ocorrencia/OcorrenciaCon">Ocorrencia</a></li>
 	  </ul>
 	  
