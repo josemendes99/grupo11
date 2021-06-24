@@ -17,11 +17,11 @@ public class Ronda implements Serializable {
 	@Id
 	
 	private long id;
-	private Date DataHoraInicio;
-	private Date DataHoraFim;
+	private Date dataHoraInicio;
+	private Date dataHoraFim;
 	private float latUltima;
 	private float longUltima;
-	private Date DataHoraUltima;
+	private Date dataHoraUltima;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Pessoa> Vigilantes;
@@ -47,11 +47,11 @@ public class Ronda implements Serializable {
 			List<Pessoa> vigilantes, Locomocao locomocao) {
 		super();
 		this.id = id;
-		this.DataHoraInicio = dataHoraInicio;
-		this.DataHoraFim = dataHoraFim;
+		this.dataHoraInicio = dataHoraInicio;
+		this.dataHoraFim = dataHoraFim;
 		this.latUltima = latUltima;
 		this.longUltima = longUltima;
-		this.DataHoraUltima = dataHoraUltima;
+		this.dataHoraUltima = dataHoraUltima;
 		this.Vigilantes = vigilantes;
 		this.locomocao = locomocao;
 	}
@@ -73,18 +73,18 @@ public class Ronda implements Serializable {
 		this.id = id;
 	}   
 	public Date getDataHoraInicio() {
-		return this.DataHoraInicio;
+		return this.dataHoraInicio;
 	}
 
 	public void setDataHoraInicio(Date DataHoraInicio) {
-		this.DataHoraInicio = DataHoraInicio;
+		this.dataHoraInicio = DataHoraInicio;
 	}   
 	public Date getDataHoraFim() {
-		return this.DataHoraFim;
+		return this.dataHoraFim;
 	}
 
 	public void setDataHoraFim(Date DataHoraFim) {
-		this.DataHoraFim = DataHoraFim;
+		this.dataHoraFim = DataHoraFim;
 	}   
 	public float getLatUltima() {
 		return this.latUltima;
@@ -101,11 +101,11 @@ public class Ronda implements Serializable {
 		this.longUltima = longUltima;
 	}   
 	public Date getDataHoraUltima() {
-		return this.DataHoraUltima;
+		return this.dataHoraUltima;
 	}
 
 	public void setDataHoraUltima(Date DataHoraUltima) {
-		this.DataHoraUltima = DataHoraUltima;
+		this.dataHoraUltima = DataHoraUltima;
 	}   
 	public List<Pessoa> getVigilantes() {
 		return this.Vigilantes;

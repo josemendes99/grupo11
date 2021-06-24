@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,8 +63,9 @@
 		       
 		           <td>longUltima</td>
 		            <td>Locomocao</td>
-		         
-		         
+		            <td>data Hora Inicio</td>
+		           <td>Data Hora Fim</td>
+		          <td>Ultima</td>
 		           <td></td>
 		           <td></td>
 		       </tr>
@@ -73,7 +76,9 @@
 			      <td>${p.latUltima}</td>  
 			      <td>${p.longUltima}</td>    
 			      <td>${p.locomocao.descricao}</td>
-			      
+			      <td>${p.dataHoraInicio}</td>
+			       <td>${p.dataHoraFim}</td>
+			      <td>${p.dataHoraUltima}</td>
 			           
 			        
 			      

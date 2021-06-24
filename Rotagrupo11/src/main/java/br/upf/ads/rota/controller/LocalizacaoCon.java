@@ -16,8 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.upf.ads.rota.jpa.JpaUtil;
 import br.upf.ads.rota.model.Localizacao;
-import br.upf.ads.rota.model.Pessoa;
-import net.iamvegan.multipartrequest.HttpServletMultipartRequest;
 
 /**
  * Servlet implementation class LocalizacaoCon
@@ -72,13 +70,7 @@ public class LocalizacaoCon extends HttpServlet {
 
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		
-		
-		Date d = null;
-		try {
-			d = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataHora"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
 		
 		
 		Long n= Long.parseLong(request.getParameter("id"));
@@ -87,18 +79,22 @@ public class LocalizacaoCon extends HttpServlet {
 	EntityManager em = JpaUtil.getEntityManager(); 
 	
 	
-	Localizacao p = new Localizacao(n,
-			new Date(), l, lo);
+	Localizacao p;
+	try {
+		p = new Localizacao(n,
+				sdf.parse(request.getParameter("dataHora").replaceAll("T", " ")), l, lo);
+	
 			
 
-	
-				
-	
 		em.getTransaction().begin(); 	
 		em.merge(p); 					
 		em.getTransaction().commit(); 	
 	    em.close();
 		listar(request, response);
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 	
 

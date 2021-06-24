@@ -1,6 +1,7 @@
 package br.upf.ads.rota.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -181,13 +182,16 @@ public class RondaCon extends HttpServlet {
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		
 	EntityManager em = JpaUtil.getEntityManager(); 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
+	
+	try{
 	Locomocao locomocao = em.find(Locomocao.class, Long.parseLong(request.getParameter("locomocao")) );
 	Ronda p = new Ronda(Long.parseLong(request.getParameter("id")),
-			new Date(), 
-			new Date(), 
+			sdf.parse(request.getParameter("dataHoraInicio").replaceAll("T", " ")),
+			sdf.parse(request.getParameter("dataHoraFim").replaceAll("T", " ")),  
 			Float.parseFloat(request.getParameter("latUltima")), 
 			Float.parseFloat(request.getParameter("longUltima")), 
-			new Date(),
+			sdf.parse(request.getParameter("dataHoraUltima").replaceAll("T", " ")),
 			new ArrayList(), locomocao);
 	
 				
@@ -197,6 +201,9 @@ public class RondaCon extends HttpServlet {
 		em.getTransaction().commit(); 	
 	    em.close();
 		listar(request, response);
+	} catch (Exception e) {
+		e.printStackTrace();
+	} 
 	}
 	
 	

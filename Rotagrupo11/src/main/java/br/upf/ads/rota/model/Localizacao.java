@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class Localizacao implements Serializable {
 
-	
+	  
 	
 	@Id
 	private Long id;

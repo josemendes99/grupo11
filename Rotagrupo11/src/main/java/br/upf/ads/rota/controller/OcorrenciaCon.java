@@ -117,7 +117,7 @@ public class OcorrenciaCon extends HttpServlet {
 	private void gravar(HttpServletRequest request, HttpServletResponse response) {
 		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
 		
-
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
 	
 		
 		float l = Float.parseFloat(request.getParameter("lat"));
@@ -126,8 +126,11 @@ public class OcorrenciaCon extends HttpServlet {
 		Long n= Long.parseLong(request.getParameter("id"));
 		
 		
-		Ocorrencia p = new Ocorrencia(n, new Date(), request.getParameter("titulo"),
-				 request.getParameter("descricao"), l, lo);
+		Ocorrencia p;
+		try {
+			p = new Ocorrencia(n, sdf.parse(request.getParameter("dataHora").replaceAll("T", " ")), request.getParameter("titulo"),
+					 request.getParameter("descricao"), l, lo);
+		
 				                
 		// ----------------------------------------------------------------------------------
 		em.getTransaction().begin(); 	
@@ -135,6 +138,11 @@ public class OcorrenciaCon extends HttpServlet {
 		em.getTransaction().commit(); 	
 		em.close();
 		listar(request, response);
+		
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response) {

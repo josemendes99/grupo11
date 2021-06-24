@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +49,40 @@
 				</div>
 			</div>
 	
+	<div class="row">
+				<div class="col-md-7">
+					<label for="dataHoraInicio">Data Hora de Inicio:</label> 
+					<input type="datetime-local" id="dataHoraInicio" name="dataHoraInicio" 
+					pattern="YYYY-MM-DDThh:mm"
+					value="<fmt:formatDate value = "${o.dataHoraInicio}" pattern = "yyyy-MM-dd"/>T<fmt:formatDate value = "${o.dataHoraInicio}" pattern= "HH:mm"/>" 
+					class="form-control">
+				</div>
+			</div>
 	
 	
+	
+	<div class="row">
+				<div class="col-md-7">
+					<label for="dataHoraFim">Data Hora de Fim:</label> 
+					<input type="datetime-local" id="dataHoraFim" name="dataHoraFim" 
+					pattern="YYYY-MM-DDThh:mm"
+					value="<fmt:formatDate value = "${o.dataHoraFim}" pattern = "yyyy-MM-dd"/>T<fmt:formatDate value = "${o.dataHoraFim}" pattern= "HH:mm"/>" 
+					class="form-control">
+				</div>
+			</div>
+	
+	
+	
+	
+	<div class="row">
+				<div class="col-md-7">
+					<label for="dataHoraUltima">Data Hora de Ultima:</label> 
+					<input type="datetime-local" id="DataHoraUltima" name="dataHoraUltima" 
+					pattern="YYYY-MM-DDThh:mm"
+					value="<fmt:formatDate value = "${o.dataHoraUltima}" pattern = "yyyy-MM-dd"/>T<fmt:formatDate value = "${o.dataHoraUltima}" pattern= "HH:mm"/>" 
+					class="form-control">
+				</div>
+			</div>
 	        	
 	        <button class="btn btn-primary" type="submit" name="gravar">Gravar</button>	
 	        <button type="submit" name="cancelar">Cancelar</button>
