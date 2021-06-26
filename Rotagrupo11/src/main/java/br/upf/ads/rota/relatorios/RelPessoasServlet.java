@@ -38,7 +38,7 @@ public class RelPessoasServlet extends HttpServlet {
 		response.getWriter().append("Não foi possível executar o relatório. Erro:" +
 		e.getMessage());
 		}
-		}
+		} 
 	
 
 	/**
