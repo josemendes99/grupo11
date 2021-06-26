@@ -43,13 +43,10 @@
 	       
 	      </ul>
 	    </li>
-	     <li><a href="#">Listar</a>
+	     <li><a href="#">Relatórios</a>
 	      <ul>
-	        <li><a href="../Pessoa/PessoaCon">Pessoa</a></li>
-	           <li><a href="../Ronda/RondaCon">Ronda</a></li>
-	            <li><a href="../Locomocao/LocomocaoCon">Locomocao</a></li>
-	            <li><a href="../Localizacao/LocalizacaoCon">Localização</a></li>
-	             <li><a href="../Ocorrencia/OcorrenciaCon">Ocorrencia</a></li>
+	        <li><a href="../Relatorios/RelPessoasServlet" target="blank">Pessoa</a></li>
+	           
 	  </ul>
 	  
 	</nav>
