@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.upf.ads.rota.jpa.JpaUtil;
+import br.upf.ads.rota.model.Locomocao;
 import br.upf.ads.rota.model.Ocorrencia;
+import br.upf.ads.rota.model.Ronda;
 import br.upf.ads.rota.uteis.Upload;
 import net.iamvegan.multipartrequest.HttpServletMultipartRequest;
 
@@ -77,8 +79,6 @@ public class OcorrenciaCon extends HttpServlet {
 		EntityManager em = JpaUtil.getEntityManager(); 
 		// ----------------------------------------------------------------------------------
 		em.getTransaction().begin(); 
-		
-		
 		if (request.getParameter("foto") != null) {
 			String nomeArquivo = "Foto"+request.getParameter("id")+".jpg";
 			 
@@ -94,6 +94,13 @@ public class OcorrenciaCon extends HttpServlet {
 		em.close();
 		listar(request, response);
 	}	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -118,7 +125,7 @@ public class OcorrenciaCon extends HttpServlet {
 		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
-	
+		Ronda ronda = em.find(Ronda.class, Long.parseLong(request.getParameter("ronda")) );
 		
 		float l = Float.parseFloat(request.getParameter("lat"));
 		float lo = Float.parseFloat(request.getParameter("log"));
@@ -129,21 +136,18 @@ public class OcorrenciaCon extends HttpServlet {
 		Ocorrencia p;
 		try {
 			p = new Ocorrencia(n, sdf.parse(request.getParameter("dataHora").replaceAll("T", " ")), request.getParameter("titulo"),
-					 request.getParameter("descricao"), l, lo);
+					 request.getParameter("descricao"), l, lo, ronda);
 		
 				                
-		// ----------------------------------------------------------------------------------
-		em.getTransaction().begin(); 	
-		em.merge(p); 					
-		em.getTransaction().commit(); 	
-		em.close();
-		listar(request, response);
-		
-	} catch (ParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	}
+			em.getTransaction().begin(); 	
+			em.merge(p); 					
+			em.getTransaction().commit(); 	
+		    em.close();
+			listar(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		}
 
 	private void excluir(HttpServletRequest request, HttpServletResponse response) {
 		EntityManager em = JpaUtil.getEntityManager(); // pega a entitymanager para persistir
@@ -157,7 +161,9 @@ public class OcorrenciaCon extends HttpServlet {
 	private void alterar(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			EntityManager em = JpaUtil.getEntityManager();
-			Ocorrencia obj = em.find(Ocorrencia.class, Long.parseLong(request.getParameter("alterar")));
+			Ocorrencia obj = em.find(Ocorrencia.class,  Long.parseLong(request.getParameter("alterar")));
+			List<Ronda> ronda = em.createQuery("from Ronda").getResultList();
+			request.setAttribute("ronda", ronda);
 			request.setAttribute("obj", obj);
 			em.close();
 			request.getRequestDispatcher("OcorrenciaForm.jsp").forward(request, response);
@@ -168,8 +174,12 @@ public class OcorrenciaCon extends HttpServlet {
 
 	private void incluir(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			Ocorrencia obj = new Ocorrencia();
+			EntityManager em = JpaUtil.getEntityManager();
+			Ocorrencia obj  = new Ocorrencia();
+			List<Ronda> ronda = em.createQuery("from Ronda").getResultList();
+			request.setAttribute("ronda", ronda);
 			request.setAttribute("obj", obj);
+			em.close();
 			request.getRequestDispatcher("OcorrenciaForm.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

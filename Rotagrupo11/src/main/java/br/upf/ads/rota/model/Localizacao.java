@@ -5,31 +5,36 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Localizacao implements Serializable {
 
 	  
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private Long id;
 	private Date dataHora;
 	private float lat;
 	private float log;
 	
+	@ManyToOne
+	private Ronda ronda; 
+	
 	
 
-	
 
-
-
-
-	public Localizacao(Long id, Date dataHora, float lat, float log) {
+	public Localizacao(Long id, Date dataHora, float lat, float log, Ronda ronda) {
 		super();
 		this.id = id;
 		this.dataHora = dataHora;
 		this.lat = lat;
 		this.log = log;
+		this.ronda = ronda;
 	}
 
 
@@ -60,12 +65,48 @@ public class Localizacao implements Serializable {
 
 
 
-	public long getId() {
-		return id;
+	public Ronda getRonda() {
+		return ronda;
 	}
-	public void setId(long id) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setRonda(Ronda ronda) {
+		this.ronda = ronda;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+//Long e n long
+	public Long getId() {
+		return id;
+	}
+	
 	public Date getDataHora() {
 		return dataHora;
 	}
@@ -87,52 +128,6 @@ public class Localizacao implements Serializable {
 
 
 
-	@Override
-	public String toString() {
-		return "Localizacao [id=" + id + ", dataHora=" + dataHora + ", lat=" + lat + ", log=" + log + "]";
-	}
-
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dataHora == null) ? 0 : dataHora.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + Float.floatToIntBits(lat);
-		result = prime * result + Float.floatToIntBits(log);
-		return result;
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Localizacao other = (Localizacao) obj;
-		if (dataHora == null) {
-			if (other.dataHora != null)
-				return false;
-		} else if (!dataHora.equals(other.dataHora))
-			return false;
-		if (id != other.id)
-			return false;
-		if (Float.floatToIntBits(lat) != Float.floatToIntBits(other.lat))
-			return false;
-		if (Float.floatToIntBits(log) != Float.floatToIntBits(other.log))
-			return false;
-		return true;
-	}
-	
-	
-	
-	
 	
 	
 	

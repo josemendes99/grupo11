@@ -34,13 +34,6 @@ public class Ronda implements Serializable {
 		super();
 	} 
 	
-	
-	
-	
-	
-	
-
-
 
 
 	public Ronda(long id, Date dataHoraInicio, Date dataHoraFim, float latUltima, float longUltima, Date dataHoraUltima,

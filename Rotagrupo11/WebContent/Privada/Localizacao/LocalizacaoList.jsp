@@ -54,7 +54,7 @@
 	
 	<form action="LocalizacaoCon">
 	
-<input type="button" onclick="location.href='LocalizacaoForm.jsp';" value="Incluir" />
+<button type="submit" name="incluir"><i class="fas fa-plus-circle"></i> Incluir</button>
 		
 		<table border="1" class="table table-hover table-condensed">
 		    <thead>
@@ -63,7 +63,7 @@
 		           <td>data Hora</td>
 		           <td>latitude </td>
 		           <td>logitude</td>
-		         
+		         <td>id</td>
 		           <td></td>
 		           <td></td>
 		       </tr>
@@ -74,7 +74,7 @@
 			      <td>${p.dataHora}</td> 
 			      <td>${p.lat}</td>  
 			       <td>${p.log}</td>       
-			      
+			      <td>${p.ronda.id}</td>
 			     
 			      <td><button type="submit" name="alterar" value="${p.id}">Alterar</button></td>
 			      <td><button type="button" onclick="confirmar()" id="excluir" name="excluir" value="${p.id}">Excluir</button></td>

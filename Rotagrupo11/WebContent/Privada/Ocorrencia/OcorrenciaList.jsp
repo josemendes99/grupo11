@@ -61,6 +61,7 @@
 		           <td>descricao</td>
 		           <td>lat</td>
 		           <td>log</td>
+		           <td>Id da Ronda</td>
 		       </tr>
 		    </thead>
 			<c:forEach items="${lista}" var="p" varStatus="cont">
@@ -71,6 +72,7 @@
 			      <td>${p.descricao}</td>
 			      <td>${p.lat}</td>
 			      <td>${p.log}</td>
+			      <td>${p.ronda.id}</td>
 			      <td><button type="submit" name="alterarFoto" value="${p.id}">Foto</button></td>
 			      <td><button type="submit" name="alterar" value="${p.id}">Alterar</button></td>
 			      <td><button type="button" onclick="confirmar()" id="excluir" name="excluir" value="${p.id}">Excluir</button></td>
