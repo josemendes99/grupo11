@@ -28,8 +28,8 @@ public class RelPessoasServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try {
+		 
+		try {  
 		HashMap<String, Object> parameters = new HashMap();
 		RelatorioUtil.rodarRelatorioPDF("WEB-INF/relatorios/Pessoas/Pessoas.jasper",
 		parameters, "RelPessoas.pdf", request, response);
@@ -40,7 +40,7 @@ public class RelPessoasServlet extends HttpServlet {
 		}
 		} 
 	
-
+ 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
