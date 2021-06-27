@@ -46,7 +46,8 @@
 	     <li><a href="#">Relatórios</a>
 	      <ul>
 	        <li><a href="../Relatorios/RelPessoasServlet" target="blank">Pessoa</a></li>
-	           
+	       <li><a href="../Relatorios/RelRondaServlet" target="blank">Ronda</a></li>
+	       <li><a href="../Relatorios/RelOcorrenciaServlet" target="blank">Ocorrencia</a></li>
 	  </ul>
 	  
 	</nav>
