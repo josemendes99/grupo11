@@ -51,7 +51,7 @@
 	
 	<form action="LocomocaoCon">
 	
-<input type="button" onclick="location.href='LocomocaoForm.jsp';" value="Incluir" />
+<button type="submit" name="incluir"><i class="fas fa-plus-circle"></i> Incluir</button>
 		
 		<table border="1" class="table table-hover table-condensed">
 		    <thead>

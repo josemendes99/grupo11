@@ -51,7 +51,7 @@
 	
 	<form action="RondaCon">
 		
-		<button type="submit" name="voltar"><i class="fas fa-plus-circle"></i> Voltar</button>
+		<button type="submit" name="voltar"><i class="fas fa-arrow-left"></i> Voltar</button>
 		<br>
 		
 		<select name="vigilante">

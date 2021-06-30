@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Locomocao implements Serializable  {
 
 	@Id
-	private long id;
+	private Long id;
 	private String descricao;
 	private String placa;
 	
@@ -27,7 +27,7 @@ public class Locomocao implements Serializable  {
 	
 	
 	
-	public Locomocao(long id, String descricao, String placa) {
+	public Locomocao(Long id, String descricao, String placa) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -36,10 +36,10 @@ public class Locomocao implements Serializable  {
 		
 		
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getDescricao() {
@@ -104,7 +104,7 @@ public class Locomocao implements Serializable  {
 
 
 
-	public Locomocao(long id) {
+	public Locomocao(Long id) {
 		super();
 		this.id = id;
 	}

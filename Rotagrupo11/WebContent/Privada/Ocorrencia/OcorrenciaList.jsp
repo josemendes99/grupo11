@@ -47,7 +47,7 @@
 	</script>
 	
 	
-	<h1>LISTAGEM DE OcorrenciaS</h1>
+	<h1>LISTAGEM DE Ocorrencias</h1>
 	
 	<form action="OcorrenciaCon">
 		<button type="submit" name="incluir"><i class="fas fa-plus-circle"></i> Incluir</button>

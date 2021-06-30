@@ -50,7 +50,7 @@
 	<br>
 			<div class="row">
 				<div class="col-md-7">
-					<label for="ronda"> ronda:</label> 
+					<label for="ronda"> Id da ronda:</label> 
 					<select name = "ronda" id = "ronda">
 						<c:forEach items="${ronda}" var = "l" varStatus="index">
 							<option value="${l.id}">${l.id} 

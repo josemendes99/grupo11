@@ -63,7 +63,7 @@
 		           <td>data Hora</td>
 		           <td>latitude </td>
 		           <td>logitude</td>
-		         <td>id</td>
+		         <td>id da Ronda</td>
 		           <td></td>
 		           <td></td>
 		       </tr>

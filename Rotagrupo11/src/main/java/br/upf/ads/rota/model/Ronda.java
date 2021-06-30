@@ -16,7 +16,7 @@ public class Ronda implements Serializable {
 	   
 	@Id
 	
-	private long id;
+	private Long id;
 	private Date dataHoraInicio;
 	private Date dataHoraFim;
 	private float latUltima;
@@ -36,7 +36,7 @@ public class Ronda implements Serializable {
 	
 
 
-	public Ronda(long id, Date dataHoraInicio, Date dataHoraFim, float latUltima, float longUltima, Date dataHoraUltima,
+	public Ronda(Long id, Date dataHoraInicio, Date dataHoraFim, float latUltima, float longUltima, Date dataHoraUltima,
 			List<Pessoa> vigilantes, Locomocao locomocao) {
 		super();
 		this.id = id;
@@ -58,11 +58,11 @@ public class Ronda implements Serializable {
 
 
 
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}   
 	public Date getDataHoraInicio() {
@@ -114,5 +114,83 @@ public class Ronda implements Serializable {
 	public void setLocomocao(Locomocao locomocao) {
 		this.locomocao = locomocao;
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Vigilantes == null) ? 0 : Vigilantes.hashCode());
+		result = prime * result + ((dataHoraFim == null) ? 0 : dataHoraFim.hashCode());
+		result = prime * result + ((dataHoraInicio == null) ? 0 : dataHoraInicio.hashCode());
+		result = prime * result + ((dataHoraUltima == null) ? 0 : dataHoraUltima.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + Float.floatToIntBits(latUltima);
+		result = prime * result + ((locomocao == null) ? 0 : locomocao.hashCode());
+		result = prime * result + Float.floatToIntBits(longUltima);
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ronda other = (Ronda) obj;
+		if (Vigilantes == null) {
+			if (other.Vigilantes != null)
+				return false;
+		} else if (!Vigilantes.equals(other.Vigilantes))
+			return false;
+		if (dataHoraFim == null) {
+			if (other.dataHoraFim != null)
+				return false;
+		} else if (!dataHoraFim.equals(other.dataHoraFim))
+			return false;
+		if (dataHoraInicio == null) {
+			if (other.dataHoraInicio != null)
+				return false;
+		} else if (!dataHoraInicio.equals(other.dataHoraInicio))
+			return false;
+		if (dataHoraUltima == null) {
+			if (other.dataHoraUltima != null)
+				return false;
+		} else if (!dataHoraUltima.equals(other.dataHoraUltima))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (Float.floatToIntBits(latUltima) != Float.floatToIntBits(other.latUltima))
+			return false;
+		if (locomocao == null) {
+			if (other.locomocao != null)
+				return false;
+		} else if (!locomocao.equals(other.locomocao))
+			return false;
+		if (Float.floatToIntBits(longUltima) != Float.floatToIntBits(other.longUltima))
+			return false;
+		return true;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Ronda [id=" + id + ", dataHoraInicio=" + dataHoraInicio + ", dataHoraFim=" + dataHoraFim
+				+ ", latUltima=" + latUltima + ", longUltima=" + longUltima + ", dataHoraUltima=" + dataHoraUltima
+				+ ", Vigilantes=" + Vigilantes + ", locomocao=" + locomocao + "]";
+	}
+	
+	
+	
+	
    
 }
